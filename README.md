@@ -28,25 +28,19 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 - You need to have a connection to PostgreSQL database through pgAdmin.
   If it's not, download and follow the instructions in this file. [Install pgAdmin](https://www.pgadmin.org/download/)
 
-### **Step 1**: Create channels table in Autonomous Database.
+### **Step 1**: Install PostgreSQL on Oracle Compute.
 
-- Download the csv file. [channels.csv](Data/channels.csv)
+- Login to Oracle cloud.
 
-- Upload data from the following csv file in your autonomous database.
+    1. Click on **Left Hamburger menu** and then select **compute**.
 
-    1. Right click on **table** and then **import data**.
+    2. Deploy a **linux instance** and take note of **IP address**.
 
-        ![](importdata.png)
+    3. SSH in to your linux server.
+    
+          **ssh -i PrivateKey opc@IPaddress**
 
-    2. Leave the source as **Local File**, click on Browse and select the downloaded csv file.
-
-        ![](browse.png)
-
-    3. Give table name as "channels".
-
-        ![](Data/tablename.png)
-
-    4. Click on next till you reach the review page and click on finish. Table is created and the data is loaded.
+- Follow this link to install PostgreSQL on Oracle Compute. [Installation of PostgreSQL](https://www.postgresql.org/download/linux/redhat/)
 
 ### **Step 2**: Download and configure the script.
 
