@@ -25,6 +25,8 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
     - Click on Test, if it shows success, click on save and then click on connect.
 
+    - You would need VNC viewer for ODICS
+
 - You need to have a connection to PostgreSQL database through pgAdmin.
   If it's not, download and follow the instructions in this file. [Install pgAdmin](https://www.pgadmin.org/download/)
 
@@ -37,22 +39,67 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
     2. Deploy a **linux instance** and take note of **IP address**.
 
     3. SSH in to your linux server.
-    
+
           **ssh -i PrivateKey opc@IPaddress**
 
 - Follow this link to install PostgreSQL on Oracle Compute. [Installation of PostgreSQL](https://www.postgresql.org/download/linux/redhat/)
 
-### **Step 2**: Download and configure the script.
+    - **Note** Disable Firewall on compute
+               Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432**
+               Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf
+               Allow remote IP address to access PostgreSQL in pg_hba.conf
 
-- Download the following script [app.py](app.py)
+               ![](Data/1.png)
 
-- Open this script and change the following parameter in the code:
+- Connect PostgreSQL to pgAdmin
 
-    **username = "Your username"  
-    password = "Your password"  
-    service_name = "Your service name"**
+### **Step 2**: Installation of ODI studio on Oracle Cloud.
 
-- now run the script as **python app.py**
+- To install **ODI Studio** you would need a Database and Java Cloud Service (JCS)
+
+- Follow this link if you are installing ODICS for the very first time[ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md)
+
+### Create Database (Dbaas)
+
+- Click on left hamburger menu and select Bare Metal, VM, and Exadata
+
+- Deploy a Dbaas instance ( Make a note of your username password and IP address )
+
+- Once Database is created you need to update policies so that JCS can detect Database
+
+**Edit policies**
+
+    **Allow service PSM to inspect vcns in compartment Compartmentname
+Allow service PSM to use subnets in compartment Compartmentname
+Allow service PSM to use vnics in compartment Compartmentname
+Allow service PSM to manage security-lists in compartment Compartmentname
+Allow service PSM to manage all-resources in compartment Compartmentname
+Allow service PSM to inspect autonomous-database in compartment Compartmentname
+Allow service PSM to inspect database-family in compartment Compartmentname**
+
+### Create Java Cloud Service(JCS)
+
+- Go to Oracle dashboard and Select Java
+
+- Make sure to select service level as Oracle Data Integrator while deploying
+
+![](Data/3.png)
+
+- Once JCS is up and running take note of IP address and download JDBC driver.[JDBC driver](https://jdbc.postgresql.org/download.html)
+
+![](Data/4.png)
+
+- SSH in to your JCS and install PostgreSQL JDBC driver in JCS.
+
+- Install driver in following folder /u01/app/oracle/middleware/odi/sdk/lib
+
+- Once ODICS is installed on JCS, Create a tunnel to your JCS
+
+  **ssh -i Darling_priv -L 5901:127.0.0.1:5901 opc@132.145.190.143 -N**
+
+- Go to VNC viewer localhost:5901. Start ODI studio ./odi.sh
+
+![](Data/5.png)
 
 
 ### **Step 3**: Run the application.
