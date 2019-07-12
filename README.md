@@ -51,7 +51,7 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
                Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf
                Allow remote IP address to access PostgreSQL in pg_hba.conf
 
-               ![](Data/1.png)
+    ![](Data/1.png)
 
 - Connect PostgreSQL to pgAdmin
 
