@@ -2,13 +2,13 @@
 
 ## Objective
 
-This documents shows you how to move data from PostgreSQL to Autonomous Data Ware House on Oracle Cloud
+This documents shows you how to move data from PostgreSQL to Autonomous Data Warehouse on Oracle Cloud using Oracle Data Integrator.
 
 ## Pre-requisites
 
 - The following lab requires an Oracle Public Cloud account with Autonomous Data Warehouse Cloud Service and Java Cloud Service.
 
-- You need to have a connection to database through admin in your SQL Developer.
+- You need to have a connection to Autonomous Data Warehouse through admin in your SQL Developer.
 
     - Open up your SQL Developer and create a new connection for admin. If you already have a connection, skip this step.
 
@@ -32,6 +32,8 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 ### **Step 1**: Install PostgreSQL on Oracle Compute.
 
+- If you already have a PostgreSQL up and running, skip this step.
+
 - Login to Oracle cloud.
 
     1. Click on **Left Hamburger menu** and then select **compute**.
@@ -52,6 +54,18 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
                ![](Data/1.png)
 
 - Connect PostgreSQL to pgAdmin
+
+- You can add data into PostgreSQL. By creating schemas and tables (Make sure Target Database has Schema and tables same as source Database)
+
+       CREATE TABLE link (ID serial PRIMARY KEY,url VARCHAR (255) NOT NULL, name VARCHAR (255) NOT NULL, description VARCHAR (255), rel VARCHAR (50));
+
+       INSERT INTO link (url, name) VALUES  ('http://www.oracle.com','Market leading Database management system');
+
+       INSERT INTO link (url, name) VALUES  ('http://www.google.com','Market leading search engine');
+
+       INSERT INTO link (url, name) VALUES  ('http://www.oracle.com','Market leading Database management system');
+
+       INSERT INTO link (url, name) VALUES  ('http://www.google.com','Market leading search engine');
 
 ### **Step 2**: Installation of ODI studio on Oracle Cloud.
 
@@ -126,6 +140,8 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 - You can monitor your jobs in operator tab
 
-  ![](Data/9.png)
+  ![](Data/10.png)
 
 - Your data would be loaded in ADWC from PostgreSQL
+
+- Go to SQLDeveloper and check if link table is been updated in ADWC and data is in sync with PostgreSQL.
