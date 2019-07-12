@@ -57,7 +57,7 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 - To install **ODI Studio** you would need a Database and Java Cloud Service (JCS)
 
-- Follow this link if you are installing ODICS for the very first time[ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md)
+- Follow this link if you are installing ODICS for the very first time. [ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md)
 
 ### Create Database (Dbaas)
 
@@ -69,13 +69,13 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 **Edit policies**
 
-    **Allow service PSM to inspect vcns in compartment Compartmentname
-Allow service PSM to use subnets in compartment Compartmentname
-Allow service PSM to use vnics in compartment Compartmentname
-Allow service PSM to manage security-lists in compartment Compartmentname
-Allow service PSM to manage all-resources in compartment Compartmentname
-Allow service PSM to inspect autonomous-database in compartment Compartmentname
-Allow service PSM to inspect database-family in compartment Compartmentname**
+    Allow service PSM to inspect vcns in compartment Compartmentname
+    Allow service PSM to use subnets in compartment Compartmentname
+    Allow service PSM to use vnics in compartment Compartmentname
+    Allow service PSM to manage security-lists in compartment Compartmentname
+    Allow service PSM to manage all-resources in compartment Compartmentname
+    Allow service PSM to inspect autonomous-database in compartment Compartmentname
+    Allow service PSM to inspect database-family in compartment Compartmentname
 
 ### Create Java Cloud Service(JCS)
 
@@ -83,11 +83,11 @@ Allow service PSM to inspect database-family in compartment Compartmentname**
 
 - Make sure to select service level as Oracle Data Integrator while deploying
 
-![](Data/3.png)
+  ![](Data/3.png)
 
 - Once JCS is up and running take note of IP address and download JDBC driver.[JDBC driver](https://jdbc.postgresql.org/download.html)
 
-![](Data/4.png)
+  ![](Data/4.png)
 
 - SSH in to your JCS and install PostgreSQL JDBC driver in JCS.
 
@@ -95,25 +95,37 @@ Allow service PSM to inspect database-family in compartment Compartmentname**
 
 - Once ODICS is installed on JCS, Create a tunnel to your JCS
 
-  **ssh -i Darling_priv -L 5901:127.0.0.1:5901 opc@132.145.190.143 -N**
+  **ssh -i key -L 5901:127.0.0.1:5901 opc@132.145.190.143 -N**
 
 - Go to VNC viewer localhost:5901. Start ODI studio ./odi.sh
 
-![](Data/5.png)
+  ![](Data/5.png)
 
 
-### **Step 3**: Run the application.
+### **Step 3**: Adding connections.
 
-- Set environment variable "FLASK_APP" to the path of the app.py
+- Add PostgreSQL and Oracle connection in topology
 
-  **export FLASK_APP=path to app.py**
+- Create new data server for Oracle and PostgreSQL
 
-- Type following command in command line:
+  ![](Data/6.png)
 
-  **flask run --host=0.0.0.0 --port=5000**
+-  After creating new connections add JDBC driver and URL for those connections
 
-- Now open any web browser and type **"localhost:5000/channels"**
+  ![](Data/7.png)
 
-  You will see channels information on the browser.
+  ![](Data/8.png)
 
-  You can also deploy this application in a compute instance and can use the REST API in SaaS Applications.
+- Test Connection and make sure those Connection are successful
+
+- Create mapping between source (PostgreSQL) and Target (ADWC)
+
+- Run the Mapping the to move data from source to Target
+
+  ![](Data/9.png)
+
+- You can monitor your jobs in operator tab
+
+  ![](Data/9.png)
+
+- Your data would be loaded in ADWC from PostgreSQL
