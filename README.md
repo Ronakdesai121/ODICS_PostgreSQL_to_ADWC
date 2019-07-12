@@ -28,7 +28,7 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
     - You would need VNC viewer for ODICS
 
 - You need to have a connection to PostgreSQL database through pgAdmin.
-  If it's not, download and follow the instructions in this file. [Install pgAdmin](https://www.pgadmin.org/download/)
+  If it's not, download IDE. [Install pgAdmin](https://www.pgadmin.org/download/)
 
 ### **Step 1**: Install PostgreSQL on Oracle Compute.
 
@@ -46,10 +46,13 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 - Follow this link to install PostgreSQL on Oracle Compute. [Installation of PostgreSQL](https://www.postgresql.org/download/linux/redhat/)
 
-    - **Note** Disable Firewall on compute
-               Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432**
-               Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf
-               Allow remote IP address to access PostgreSQL in pg_hba.conf
+    - **Note** Disable Firewall on compute.
+
+               Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432** .
+
+               Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf .
+
+               Allow remote IP address to access PostgreSQL in pg_hba.conf .
 
     ![](Data/1.png)
 
@@ -99,13 +102,11 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
   ![](Data/3.png)
 
-- Once JCS is up and running take note of IP address and download JDBC driver.[JDBC driver](https://jdbc.postgresql.org/download.html)
-
-  ![](Data/4.png)
+- Once JCS is up and running take note of IP address
 
 - SSH in to your JCS and install PostgreSQL JDBC driver in JCS.
 
-- Install driver in following folder /u01/app/oracle/middleware/odi/sdk/lib
+    ![](Data/4.png)
 
 - Once ODICS is installed on JCS, Create a tunnel to your JCS
 
@@ -118,7 +119,11 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 ### **Step 3**: Adding connections.
 
-- Add PostgreSQL and Oracle connection in topology
+- Download JDBC driver for PostgreSQL Database.[JDBC driver](https://jdbc.postgresql.org/download.html)
+
+- Install driver on JCS in following folder /u01/app/oracle/middleware/odi/sdk/lib
+
+- Add PostgreSQL and Oracle connection in topology 
 
 - Create new data server for Oracle and PostgreSQL
 
