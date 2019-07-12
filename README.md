@@ -16,10 +16,10 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
         1.	Connection Name: Give any connection name
         2.	Username: admin (or any DB user)
-        3.	Password: Password you entered while creating database on cloud.
+        3.	Password: Password you entered while creating database on cloud
         4.	Connection Type: Cloud PDB
         5.	Configuration File: Path to your wallet
-        6.	Keystore Password: Password entered while downloading wallet.
+        6.	Keystore Password: Password entered while downloading wallet
 
         ![](Data/login.png)
 
@@ -34,25 +34,26 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 - If you already have a PostgreSQL up and running, skip this step.
 
-- Login to Oracle cloud.
+- Login to Oracle cloud
 
-    1. Click on **Left Hamburger menu** and then select **compute**.
+    1. Click on **Left Hamburger menu** and then select **compute**
 
-    2. Deploy a **linux instance** and take note of **IP address**.
+    2. Deploy a **linux instance** and take note of **IP address**
 
-    3. SSH in to your linux server.
+    3. SSH in to your linux server
 
           **ssh -i PrivateKey opc@IPaddress**
 
 - Follow this link to install PostgreSQL on Oracle Compute. [Installation of PostgreSQL](https://www.postgresql.org/download/linux/redhat/)
 
-    - **Note** Disable Firewall on compute.
+    - **Note**
+               Disable Firewall on compute
 
-               Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432** .
+               Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432**
 
-               Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf .
+               Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf
 
-               Allow remote IP address to access PostgreSQL in pg_hba.conf .
+               Allow remote IP address to access PostgreSQL in pg_hba.conf
 
     ![](Data/1.png)
 
@@ -104,7 +105,7 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 - Once JCS is up and running take note of IP address
 
-- SSH in to your JCS and install PostgreSQL JDBC driver in JCS.
+- SSH in to your JCS and install PostgreSQL JDBC driver in JCS
 
     ![](Data/4.png)
 
@@ -123,7 +124,7 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
 - Install driver on JCS in following folder /u01/app/oracle/middleware/odi/sdk/lib
 
-- Add PostgreSQL and Oracle connection in topology 
+- Add PostgreSQL and Oracle connection in topology
 
 - Create new data server for Oracle and PostgreSQL
 
