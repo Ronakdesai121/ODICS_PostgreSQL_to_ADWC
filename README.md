@@ -4,9 +4,25 @@
 
 This documents shows you how to move data from PostgreSQL to Autonomous Data Warehouse on Oracle Cloud using Oracle Data Integrator.
 
+Follow this link if you are installing ODICS for the very first time. [ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md)
+
 ## Pre-requisites
 
+- This lab is written assuming you have installed/working Oracle Data Integrator.
+
 - The following lab requires an Oracle Public Cloud account with Autonomous Data Warehouse Cloud Service and Java Cloud Service.
+
+- Make sure you have your networking components set up correctly and have assigned all the required policies
+
+**Edit policies**
+
+    Allow service PSM to inspect vcns in compartment Compartmentname
+    Allow service PSM to use subnets in compartment Compartmentname
+    Allow service PSM to use vnics in compartment Compartmentname
+    Allow service PSM to manage security-lists in compartment Compartmentname
+    Allow service PSM to manage all-resources in compartment Compartmentname
+    Allow service PSM to inspect autonomous-database in compartment Compartmentname
+    Allow service PSM to inspect database-family in compartment Compartmentname
 
 - You need to have a connection to Autonomous Data Warehouse through admin in your SQL Developer.
 
@@ -71,45 +87,13 @@ This documents shows you how to move data from PostgreSQL to Autonomous Data War
 
        INSERT INTO link (url, name) VALUES  ('http://www.google.com','Market leading search engine');
 
-### **Step 2**: Installation of ODI studio on Oracle Cloud.
-
-- To install **ODI Studio** you would need a Database and Java Cloud Service (JCS)
-
-- Follow this link if you are installing ODICS for the very first time. [ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md)
-
-### Create Database (Dbaas)
-
-- Click on left hamburger menu and select Bare Metal, VM, and Exadata
-
-- Deploy a Dbaas instance ( Make a note of your username password and IP address )
-
-- Once Database is created you need to update policies so that JCS can detect Database
-
-**Edit policies**
-
-    Allow service PSM to inspect vcns in compartment Compartmentname
-    Allow service PSM to use subnets in compartment Compartmentname
-    Allow service PSM to use vnics in compartment Compartmentname
-    Allow service PSM to manage security-lists in compartment Compartmentname
-    Allow service PSM to manage all-resources in compartment Compartmentname
-    Allow service PSM to inspect autonomous-database in compartment Compartmentname
-    Allow service PSM to inspect database-family in compartment Compartmentname
-
-### Create Java Cloud Service(JCS)
-
-- Go to Oracle dashboard and Select Java
-
-- Make sure to select service level as Oracle Data Integrator while deploying
-
-  ![](Data/3.png)
-
-- Once JCS is up and running take note of IP address
+### **Step 2**: Go to ODI studio on Oracle Cloud.
 
 - SSH in to your JCS and install PostgreSQL JDBC driver in JCS
 
     ![](Data/4.png)
 
-- Once ODICS is installed on JCS, Create a tunnel to your JCS
+- ODICS is installed on JCS, Create a tunnel to your JCS
 
   **ssh -i key -L 5901:127.0.0.1:5901 opc@132.145.190.143 -N**
 
