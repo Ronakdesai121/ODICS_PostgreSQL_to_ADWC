@@ -14,15 +14,15 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
 - Make sure you have your networking components set up correctly and have assigned all the required policies
 
-**Edit policies**
+    **Edit policies**
 
-    Allow service PSM to inspect vcns in compartment Compartmentname
-    Allow service PSM to use subnets in compartment Compartmentname
-    Allow service PSM to use vnics in compartment Compartmentname
-    Allow service PSM to manage security-lists in compartment Compartmentname
-    Allow service PSM to manage all-resources in compartment Compartmentname
-    Allow service PSM to inspect autonomous-database in compartment Compartmentname
-    Allow service PSM to inspect database-family in compartment Compartmentname
+        Allow service PSM to inspect vcns in compartment Compartmentname
+        Allow service PSM to use subnets in compartment Compartmentname
+        Allow service PSM to use vnics in compartment Compartmentname
+        Allow service PSM to manage security-lists in compartment Compartmentname
+        Allow service PSM to manage all-resources in compartment Compartmentname
+        Allow service PSM to inspect autonomous-database in compartment Compartmentname
+        Allow service PSM to inspect database-family in compartment Compartmentname
 
 - You need to have a connection to Autonomous Data Warehouse through admin in your SQL Developer.
 
@@ -102,9 +102,9 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
   ![](Data/5.png)
 
 
-### **Step 3**: Adding connections.
+### **Step 3**: Go to Topology in OCI to add connections.
 
-- Download JDBC driver for PostgreSQL Database.[JDBC driver](https://jdbc.postgresql.org/download.html)
+- Before adding connection download and install JDBC driver for PostgreSQL Database.[JDBC driver](https://jdbc.postgresql.org/download.html)
 
 - Install driver on JCS in following folder /u01/app/oracle/middleware/odi/sdk/lib
 
