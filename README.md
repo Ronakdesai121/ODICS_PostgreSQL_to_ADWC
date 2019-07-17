@@ -108,6 +108,8 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
 - Install driver on JCS in following folder /u01/app/oracle/middleware/odi/sdk/lib
 
+- If you are using marketplace image of ODI install driver on compute where image is running
+
 - Add PostgreSQL and Oracle connection in topology
 
 - Create new data server for Oracle and PostgreSQL
