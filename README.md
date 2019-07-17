@@ -1,16 +1,17 @@
+
 # ODICS data movement to Autonomous Database from PostgreSQL
 
 ## Objective
 
-This documents shows you how to move data from PostgreSQL to Autonomous Data Warehouse on Oracle Cloud using Oracle Data Integrator.
+This document shows you how to move data from PostgreSQL to Autonomous Data Warehouse on Oracle Cloud using Oracle Data Integrator
 
-Follow this link if you are installing ODICS for the very first time. [ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md) or Deploy a market place image
+Follow this link if you are installing ODICS for the very first time. [ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md) or you can deploy a marketplace image
 
 ## Pre-requisites
 
-- This lab is written assuming you have installed and have working Oracle Data Integrator.
+- This lab is written assuming you have installed and have working Oracle Data Integrator
 
-- The following lab requires an Oracle Public Cloud account with Autonomous Data Warehouse Cloud Service and Java Cloud Service.
+- The following lab requires an Oracle Public Cloud account with Autonomous Data Warehouse Cloud Service, PostgreSQL Database and Oracle Data Integrator
 
 - Make sure you have your networking components set up correctly and have assigned all the required policies
 
@@ -24,9 +25,9 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
         Allow service PSM to inspect autonomous-database in compartment Compartmentname
         Allow service PSM to inspect database-family in compartment Compartmentname
 
-- You need to have a connection to Autonomous Data Warehouse through admin in your SQL Developer.
+- You need to have a connection to Autonomous Data Warehouse through admin in your SQL Developer
 
-    - Open up your SQL Developer and create a new connection for admin. If you already have a connection, skip this step.
+    - Open up your SQL Developer and create a new connection for admin. If you already have a connection, skip this step
 
     - Enter the following details for admin:
 
@@ -39,16 +40,16 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
         ![](Data/login.png)
 
-    - Click on Test, if it shows success, click on save and then click on connect.
+    - Click on Test, if it shows success, click on save and then click on connect
 
     - You would need VNC viewer for ODICS
 
 - You need to have a connection to PostgreSQL database through pgAdmin.
   If it's not, download IDE. [Install pgAdmin](https://www.pgadmin.org/download/)
 
-### **Step 1**: Install PostgreSQL on Oracle Compute.
+### **Step 1**: Install PostgreSQL on Oracle Compute
 
-- If you already have a PostgreSQL up and running, skip this step.
+- If you already have a PostgreSQL up and running, skip this step
 
 - Login to Oracle cloud
 
@@ -62,14 +63,14 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
 - Follow this link to install PostgreSQL on Oracle Compute. [Installation of PostgreSQL](https://www.postgresql.org/download/linux/redhat/)
 
-    - **Note**
-               Disable Firewall on compute
+    **Note**
+                Disable Firewall on compute
 
-               Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432**
+                Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432**
 
-               Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf
+                Make sure Postgres server is accessible remotely added listen_addresses = **'*'** to postgresql.conf
 
-               Allow remote IP address to access PostgreSQL in pg_hba.conf
+                Allow remote IP address to access PostgreSQL in pg_hba.conf
 
     ![](Data/1.png)
 
@@ -87,7 +88,7 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
        INSERT INTO link (url, name) VALUES  ('http://www.google.com','Market leading search engine');
 
-### **Step 2**: Go to ODI studio on Oracle Cloud.
+### **Step 2**: Go to ODI studio on Oracle Cloud
 
 - SSH in to your JCS and install PostgreSQL JDBC driver in JCS
 
@@ -136,4 +137,4 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
 - Your data would be loaded in ADWC from PostgreSQL
 
-- Go to SQLDeveloper and check if link table is been updated in ADWC and data is in sync with PostgreSQL.
+- Go to SQLDeveloper and check if link table is been updated in ADWC and data is in sync with PostgreSQL
