@@ -63,7 +63,8 @@ Follow this link if you are installing ODICS for the very first time. [ODICS Ins
 
 - Follow this link to install PostgreSQL on Oracle Compute. [Installation of PostgreSQL](https://www.postgresql.org/download/linux/redhat/)
 
-    **Note**
+      Note
+      
                 Disable Firewall on compute
 
                 Enabled Ingress and Egress Rules for all port including TCP traffic for port: **5432**
