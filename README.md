@@ -5,7 +5,10 @@
 
 This document shows you how to move data from PostgreSQL to Autonomous Data Warehouse on Oracle Cloud using Oracle Data Integrator
 
-Follow this link if you are installing ODICS for the very first time. [ODICS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md) or you can deploy a marketplace image
+### ODICS Installation
+
+- Follow this link if you are installing ODICS using Java Cloud Service. [ODICS JCS Installation](https://oraclecps.github.io/odi_config_martha/?page=readme.md)
+- Follow this link if you are using a marketplace image [ODICS Marketplace Installation](https://docs.oracle.com/en/middleware/fusion-middleware/data-integrator/12.2.1.3/odimp/getting-started-oracle-cloud-marketplace.html#GUID-1793F6A6-8581-465D-BBE3-8F0C8ADD6536)
 
 ## Pre-requisites
 
